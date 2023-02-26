@@ -1,16 +1,40 @@
 const form = document.querySelector("#form1");
-const input = document.querySelector('input[name="username"]');
+const input = document.querySelector("#username");
+const error = document.querySelector("#error");
+const ul = document.querySelector(".ul");
 
-const ul = document.querySelector('.ul');
+form.addEventListener("submit", function (event) {
+    event.preventDefault(); //prevent linkze gadasvla
+    error.textContent = "";
 
-form.addEventListener('submit', function(event){
-  event.preventDefault();
+    //shevqmnat axali elementi 'li' da davamatot 'ul'-shi tu igi carieli araa;
+    // trim() punqcia spacebs ashorebs strings
+    if (input.value.trim()) {
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        const span = document.createElement("span");
+        const li = document.createElement("li");
 
-  //vqmnit axal element li-s da vamatebt ul-shi
-  const li = document.createElement('li');
-  li.textContent = input.value;
-  ul.appendChild(li);
+        checkbox.addEventListener("change", (event) => {
+            //toggle punqcia iseve mushaobs rogorc qvemot mocemuli punqcia tu monishnulia amatebs class-s tu ara aklebs.
+            //span.classList.toggle("line");
 
-  input.value = '';
-  input.focus();
+            if (event.target.checked) {
+                event.target.parentNode.classList.add("line"); //parentNode-it vwvdebit mshobels;
+            } else {
+                event.target.parentNode.classList.remove("line");
+            }
+        });
+
+        span.textContent = input.value;
+
+        li.appendChild(checkbox);
+        li.appendChild(span);
+        ul.appendChild(li);
+
+        input.value = "";
+        input.focus();
+    } else {
+        error.textContent = "empty value try again";
+    }
 });

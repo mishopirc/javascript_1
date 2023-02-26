@@ -5,15 +5,23 @@
         <meta name="viewport" content="width=device-width" />
         <title>javascript 2</title>
         <link href="style.css" rel="stylesheet" type="text/css" />
+
+
+        <style>
+            .line {
+                text-decoration: line-through;
+                color: darkred;
+            }
+        </style>
     </head>
 
     <body>
         <form id="form1" action="submit" method="post">
-            <input type="text" name="username" />
+            <input type="text" name="username" id="username" />
 
             <button type="submit">submit</button>
         </form>
-
+        <p style="color: red;" id="error"></p>
         <ul class="ul"></ul>
 
         <script src="script.js"></script>
